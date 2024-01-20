@@ -30,5 +30,11 @@
 
 ## Hosted Copy
 <a name="hosted"></a>
-## Setting Up Project
-<a name="project"></a>
+There is a hosted copy of this project at:
+`http://35.245.161.91` <br>
+The accounts set up for testing are:
+- Lawyer: harvey@firm.org, Test123!
+- Lawyer: mike@firm.org, Test123!
+- Lawyer: louis@firm.org, Test123!
+- Client: dana@client.org, Test123!
+- Pending Account: daniel@pending.org, Test123!
