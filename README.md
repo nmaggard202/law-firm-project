@@ -26,7 +26,7 @@
 
 | Pending Users Page | Auth0 Authentication |
 | ----------- | ----------- |
-| ![alt text](project_features/pending.png) | ![alt text](project_features/authentication.png) |
+| ![alt text](project_features/user_pending.png) | ![alt text](project_features/authentication.png) |
 
 ## Hosted Copy
 <a name="hosted"></a>
