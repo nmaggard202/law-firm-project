@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="content-layout">
+  <h1 id="page-title" class="content__title">Appointment Details</h1>
+  <div class="content__body">
+    <p id="page-description">
+    </p>
+    <div class="profile-grid" style="padding-top: 10px;">
+      <div class="profile__header" style="padding-bottom: 32px;">
+        <div class="profile__headline">
+          <h2 class="custom__title">{{ appointment.time }}</h2>
+          <h2 class="custom__title">{{ appointment.location }}</h2>
+          <span class="profile__description">{{ appointment.description }}</span>
+          <span class="profile__description">Client: {{ appointment.client }}</span>
+          <span class="profile__description">Lawyer: {{ appointment.lawyer }}</span>
+          <span class="profile__description">Status: {{ appointment.approved }}</span>
+        </div>
+      </div>
+
+      <h1 id="page-title" class="content__title">Appointment Notes</h1>
+      <a href="/appointments/{{appointment.id}}/notes/"><button style="padding-top: 10px; padding-bottom: 10px;">Add
+          Appointment Note</button></a>
+      {% for n in appointment.notes %}
+      <h2 class="note__title">Note #{{ n.id }}</h2>
+      <div class="note__details__div">
+        <span class="note__details">Description: {{ n.description }}</span>
+        <span class="note__details">File: <a href="/{{n. file}}/" download="">Download File</a></span>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</div>
+{% endblock %}

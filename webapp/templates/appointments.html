@@ -1,0 +1,68 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="content-layout">
+  {% if type == "client" %}
+  <h1 id="page-title" class="content__title">My Appointments</h1>
+  {% else %}
+  <h1 id="page-title" class="content__title">Manage Appointments</h1>
+  {% endif %}
+  <div class="content__body">
+    <p id="page-description">
+    </p>
+    <div class="profile-grid" style="padding-top: 10px;">
+      <div class="profile__header" style="padding-bottom: 32px;">
+        <img src="{{ user_profile.picture }}" alt="Profile" class="profile__avatar" />
+        <div class="profile__headline">
+          <h2 class="profile__title">{{ name }}</h2>
+          <span class="profile__description">{{ user_profile.email }}</span>
+        </div>
+      </div>
+      {% if type == "client" %}
+      <a href="appointments/schedule/"><button style="padding-top: 10px; padding-bottom: 10px;">Schedule
+          Appointment</button></a>
+      {% endif %}
+      <div class="profile__details">
+      </div>
+      <table>
+        <thead>
+          <th>Date</th>
+          <th>Location</th>
+          <th>Client</th>
+          <th>Lawyer</th>
+          <th>Approved</th>
+          <th>Details</th>
+          <th>Cancel</th>
+          {% if type == "lawyer" %}
+          <th>Approve</th>
+          {% endif %}
+        </thead>
+        {% for a in appointments %}
+        <tr>
+          <th>{{ a.time }}</th>
+          <th>{{ a.location }}</th>
+          <th>{{ a.client }}</th>
+          <th>{{ a.lawyer }}</th>
+          <th>{{ a.approved }}</th>
+          <th><a href="/appointments/{{a.id}}/"><button>Details</button></a></th>
+          <th>
+            <iframe name="formSending" style="display: none;"></iframe>
+            <form action="/api/appointments/{{a.id}}/delete/" method="post" target="formSending">
+              <button class="select">Cancel</button>
+            </form>
+          </th>
+          {% if type == "lawyer" %}
+          <th>
+            <iframe name="formSending" style="display: none;"></iframe>
+            <form action="/api/appointments/{{a.id}}/approve/" method="post" target="formSending">
+              <button class="select">Approve</button>
+            </form>
+          </th>
+          {% endif %}
+        </tr>
+        {% endfor %}
+      </table>
+    </div>
+  </div>
+</div>
+{% endblock %}

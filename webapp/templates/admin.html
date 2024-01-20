@@ -1,0 +1,71 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="content-layout">
+  <h1 id="page-title" class="content__title">Admin Page</h1>
+  <div class="content__body">
+    <h1 id="page-title" class="content__title">User Management</h1>
+    <div class="profile-grid" style="padding-top: 10px;">
+      <table>
+        <thead>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Approved</th>
+          <th>Delete</th>
+          <th>Approve</th>
+          <th>User Type</th>
+        </thead>
+        {% for u in users %}
+        <tr>
+          <th>{{ u.name }}</th>
+          <th>{{ u.type }}</th>
+          <th>{{ u.approved }}</th>
+          {% if u.type == "admin" %}
+          <th>Test</th>
+          {% else %}
+          <th>
+            <iframe name="formSending" style="display: none;"></iframe>
+            <form action="/api/users/{{u.id}}/delete/" method="post" target="formSending">
+              <button class="select">Delete</button>
+            </form>
+          </th>
+          {% endif %}
+          {% if u.approved == "False" %}
+          <th>
+            <iframe name="formSending" style="display: none;"></iframe>
+            <form action="/api/users/{{u.id}}/approve/" method="post" target="formSending">
+              <button class="select">Approve</button>
+            </form>
+          </th>
+          {% endif %}
+          {% if u.approved == "True" %}
+          <th>Approved</th>
+          {% endif %}
+          {% if u.type == "client" %}
+          <th>
+            <iframe name="formSending" style="display: none;"></iframe>
+            <form action="/api/users/{{u.id}}/type/" method="post" target="formSending">
+              <input name="type" id="type" value="lawyer" style="display: none;" />
+              <button class="select">Make Lawyer</button>
+            </form>
+          </th>
+          {% endif %}
+          {% if u.type == "lawyer" %}
+          <th>
+            <iframe name="formSending" style="display: none;"></iframe>
+            <form action="/api/users/{{u.id}}/type/" method="post" target="formSending">
+              <input name="type" id="type" value="client" style="display: none;" />
+              <button class="select">Make Client</button>
+            </form>
+          </th>
+          {% endif %}
+          {% if u.type == "admin" %}
+          <th>Administrator</th>
+          {% endif %}
+        </tr>
+        {% endfor %}
+      </table>
+    </div>
+  </div>
+</div>
+{% endblock %}

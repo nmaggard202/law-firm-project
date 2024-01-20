@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="content-layout">
+  <h1 id="page-title" class="content__title">Set Profile Name</h1>
+  <div class="content__body">
+    <p id="page-description">
+    </p>
+    <div class="profile-grid" style="padding-top: 10px;">
+      <div class="profile__header" style="padding-bottom: 32px;">
+        <img src="{{ user_profile.picture }}" alt="Profile" class="profile__avatar" />
+        <div class="profile__headline">
+          <h2 class="profile__title">{{ user_profile.email }}</h2>
+          <span class="profile__description">{{ user_profile.email }}</span>
+        </div>
+      </div>
+
+      <div class="profile__details">
+        <span class="profile__description">Set your name.</span>
+      </div>
+      <iframe name="formSending" style="display: none;"></iframe>
+      <form action="/api/users/{{ user }}/name/" method="POST" target="formSending">
+        <div class="form-group">
+          <div class="selector">
+            <label for="name">Name</label>
+            <input type="text" id="name" name="name" value="John Doe">
+          </div>
+          <div>
+            <button type="submit" value="Submit" class="redirect">Set Name</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+{% endblock %}

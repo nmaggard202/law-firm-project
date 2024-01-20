@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="content-layout">
+  <h1 id="page-title" class="content__title">Pending Approval</h1>
+  <div class="content__body">
+    <p id="page-description">
+    </p>
+    <div class="profile-grid" style="padding-top: 10px;">
+      <div class="profile__header" style="padding-bottom: 32px;">
+        <img src="{{ user_profile.picture }}" alt="Profile" class="profile__avatar" />
+        <div class="profile__headline">
+          <h2 class="profile__title">{{ user_profile.name }}</h2>
+          <span class="profile__description">{{ user_profile.email }}</span>
+        </div>
+      </div>
+      <div class="profile__details">
+        <span class="profile__description">Your account is pending approval.</span>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

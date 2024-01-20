@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="content-layout">
+  <h1 id="page-title" class="content__title">Schedule Appointment</h1>
+  <div class="content__body">
+    <iframe name="formSending" style="display: none;"></iframe>
+    <form action="/api/appointments/" method="POST" target="formSending">
+      <div class="form-group">
+        <div class="selector">
+          <label for="name">Description</label>
+          <input type="text" id="name" class="" name="description" value="Lorem ipsum.">
+        </div>
+        <div class="selector">
+          <label for="name">Meeting Date and Time</label>
+          <input type="datetime-local" id="name" name="time" value="2024-06-12T19:30" class="floatLabel" />
+        </div>
+        <div class="selector">
+          <label for="name"> Meeting Location</label>
+          <select name="location" id="name" class="">
+            <option value="newyork">New York Office</option>
+            <option value="losangeles">Los Angeles Office</option>
+            <option value="london">London Office</option>
+          </select>
+        </div>
+        <div class="selector">
+          <label for="name">Meeting Lawyer</label>
+          <select name="lawyer" id="name" class="">
+            {% for u in users %}
+            <option value="{{ u.id }}">{{ u.name }}</option>
+            {% endfor %}
+          </select>
+        </div>
+        <div>
+          <button class="redirect">Schedule Appointment</button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+{% endblock %}

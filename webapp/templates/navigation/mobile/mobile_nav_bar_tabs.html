@@ -1,0 +1,12 @@
+{% macro tab(label='', path='') %}
+<a href="{{ path }}" class="mobile-nav-bar__tab {% if request.path == path %}nav-bar__tab--active{% endif %}">
+  {{ label }}
+</a>
+{% endmacro %}
+
+<div class="mobile-nav-bar__tabs">
+  {% if session.user %}
+  {{ tab(label="Appointments", path=url_for('webapp.appointments')) }}
+  {{ tab(label="Admin", path=url_for('webapp.admin')) }}
+  {% endif %}
+</div>

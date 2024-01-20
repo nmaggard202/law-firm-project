@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#000000" />
+  <link rel="shortcut icon" href="https://www.whitecase.com/themes/custom/whitecase/favicon.ico" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+  <title>Law Firm Example</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}" />
+</head>
+
+<body>
+  <div class="page-layout">
+    {% include "navigation/desktop/nav_bar.html" %}
+    {% include "navigation/mobile/mobile_nav_bar.html" %}
+    <div class="page-layout__content">
+      {% block content %}{% endblock %}
+    </div>
+    {% include "page_footer.html" %}
+  </div>
+
+  <script type="text/javascript" src="{{ url_for('static', filename='js/main.js') }}"></script>
+  <script type="text/javascript" src="{{ url_for('static', filename='js/jquery-3.7.1.js') }}"></script>
+  <script type="text/javascript" src="{{ url_for('static', filename='js/refresh.js') }}"></script>
+</body>
+
+</html>

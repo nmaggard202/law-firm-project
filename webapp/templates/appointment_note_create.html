@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="content-layout">
+  <h1 id="page-title" class="content__title">Add Appointment Note</h1>
+  <div class="content__body">
+    <iframe name="formSending" style="display: none;"></iframe>
+    <form action="/api/appointments/{{ appointment.id }}/notes/" method="POST" target="formSending"
+      enctype="multipart/form-data">
+      <div class="form-group">
+        <div class="selector">
+          <label for="name">Description</label>
+          <input type="text" id="name" name="description" value="Lorem ipsum.">
+        </div>
+        <div class="input_container">
+          <input type="file" name="file" id="fileUpload">
+        </div>
+        <div>
+          <button type="submit" value="Submit" class="redirect">Add Appointment Note</button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+{% endblock %}
