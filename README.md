@@ -3,8 +3,6 @@
 [Features](#features)
 <br>
 [Hosted Copy](#hosted)
-<br>
-[Setting Up Project](#project)
 ---
 ## Features
 <a name="features"></a>
